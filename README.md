@@ -23,7 +23,9 @@ Um dieses Repository in MakeCode zu bearbeiten.
 This image shows the blocks code from the last commit in master.
 This image may take a few minutes to refresh.
 
-![A rendered view of the blocks](https://github.com/calliope-net/fernsteuerung-s61/raw/master/.github/makecode/blocks.png)
+![A rendered view of the blocks raw](https://github.com/calliope-net/fernsteuerung-s61/raw/master/.github/makecode/blocks.png)
+
+![A rendered view of the blocks](https://github.com/calliope-net/fernsteuerung-s61/master/.github/makecode/blocks.png)
 
 #### Metadaten (verwendet für Suche, Rendering)
 
