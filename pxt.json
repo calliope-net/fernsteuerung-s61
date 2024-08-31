@@ -2,7 +2,8 @@
     "name": "fernsteuerung-s61",
     "description": "",
     "dependencies": {
-        "core": "*"
+        "core": "*",
+        "fernsteuerung": "github:calliope-net/fernsteuerung#v1.5.14"
     },
     "files": [
         "main.blocks",
