@@ -34,14 +34,14 @@ function modell_Callibot () {
     } else if (sender.isFunktion(sender.eFunktion.f20fahrplan) && sender.sender_ButtonA_Switch()) {
         sender.send20Strecken(
         btf.btf_sendBuffer19(),
-        sender.sender_Strecke(192, 31, 30),
-        sender.sender_Strecke(64, 31, 30),
-        sender.sender_Strecke(255, 16, 20),
-        sender.sender_Strecke(192, 1, 115),
-        sender.sender_Strecke(1, 16, 20),
+        sender.sender_Strecke(192, 31, 30, false),
+        sender.sender_Strecke(64, 31, 30, false),
+        sender.sender_Strecke(255, 16, 20, false),
+        sender.sender_Strecke(192, 1, 115, false),
+        sender.sender_Strecke(1, 16, 20, false),
         1
         )
-        btf.setAbstand(btf.btf_sendBuffer19(), btf.e3Abstand.u1)
+        btf.setAbstand(btf.btf_sendBuffer19(), btf.e3Abstand.u0)
         btf.setaktiviert(btf.btf_sendBuffer19(), btf.e3aktiviert.m1, true)
     } else if (sender.isFunktion(sender.eFunktion.f20fahrplan) && sender.sender_ButtonB_Switch()) {
         sender.send2x2Motoren(
@@ -190,7 +190,6 @@ loops.everyInterval(400, function () {
         } else if (sender.isModell(sender.eModell.mkcg)) {
             modell_MKC_Gabelstapler()
         } else if (sender.isModell(sender.eModell.mkck)) {
-            btf.comment(sender.multiswitchGrove(true))
             modell_MKC_Kran()
         }
         btf.sendData(btf.btf_sendBuffer19())
