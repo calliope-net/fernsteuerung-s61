@@ -167,6 +167,9 @@ input.onButtonEvent(Button.A, btf.buttonEventValue(ButtonEvent.Hold), function (
     btf.buttonAhold()
 })
 sender.beimStart()
+basic.forever(function () {
+	
+})
 loops.everyInterval(400, function () {
     if (sender.isFunktion(sender.eFunktion.ng) && sender.joystickQwiic()) {
         basic.setLedColor(0x007fff)
