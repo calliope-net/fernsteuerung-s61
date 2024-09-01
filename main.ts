@@ -22,7 +22,7 @@ function modell_Callibot () {
     } else if (sender.isFunktion(sender.eFunktion.f20fahrplan) && sender.sender_ButtonA_Switch()) {
         sender.send20Strecken(
         btf.btf_sendBuffer19(),
-        sender.sender_Strecke(192, 31, 30),
+        sender.sender_Strecke(192, 31, 30, true),
         sender.sender_Strecke(64, 31, 30),
         sender.sender_Strecke(255, 16, 20),
         sender.sender_Strecke(192, 1, 115),
