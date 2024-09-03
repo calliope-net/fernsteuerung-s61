@@ -26,7 +26,7 @@ function modell_Callibot () {
         160,
         31,
         0,
-        !(sender.sender_ButtonA_Switch()),
+        sender.sender_ButtonA_Switch(),
         btf.e3Abstand.u0,
         sender.sender_zehntelsekunden(btf.ePause.s1)
         )
