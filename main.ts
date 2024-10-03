@@ -95,6 +95,7 @@ function modell_MKC_Kran () {
     }
     btf.setSchalter(btf.btf_sendBuffer19(), btf.e0Schalter.b0, sender.joystickButtonPosition())
     btf.setSchalter(btf.btf_sendBuffer19(), btf.e0Schalter.b1, sender.sender_ButtonB_Switch())
+    sender.send00MDKranMagnet(btf.btf_sendBuffer19(), sender.sender_ButtonB_Switch(), 240)
 }
 input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
     sender.buttonA()
