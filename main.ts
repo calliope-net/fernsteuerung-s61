@@ -90,11 +90,12 @@ function modell_MKC_Kran () {
         )
     } else if (sender.isFunktion(sender.eFunktion.ma_mb)) {
         sender.send00MABKran(btf.btf_sendBuffer19(), sender.sender_xmotor(), sender.sender_ymotor())
+        btf.setSchalter(btf.btf_sendBuffer19(), btf.e0Schalter.b1, true)
     } else if (sender.isFunktion(sender.eFunktion.mc_mb)) {
         sender.send00MCBKran(btf.btf_sendBuffer19(), sender.sender_xmotor(), sender.sender_ymotor())
+        btf.setSchalter(btf.btf_sendBuffer19(), btf.e0Schalter.b1, true)
     }
     btf.setSchalter(btf.btf_sendBuffer19(), btf.e0Schalter.b0, sender.joystickButtonPosition())
-    btf.setSchalter(btf.btf_sendBuffer19(), btf.e0Schalter.b1, sender.sender_ButtonB_Switch())
     sender.send00MDKranMagnet(btf.btf_sendBuffer19(), sender.sender_ButtonB_Switch(), 240)
 }
 input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
