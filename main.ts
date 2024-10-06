@@ -121,7 +121,7 @@ function modell_MKC_Sensoren () {
         btf.btf_sendBuffer19(),
         sender.sender_xmotor(),
         sender.sender_servo16(),
-        sender.sender_ButtonA_Switch(),
+        !(sender.sender_ButtonA_Switch()),
         btf.e3Abstand.u1
         )
         btf.setSensor(btf.btf_sendBuffer19(), btf.eBufferPointer.m0, btf.eSensor.b5Spur, sender.sender_ButtonB_Switch())
