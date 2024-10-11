@@ -49,7 +49,10 @@ function modell_Callibot () {
         btf.btf_sendBuffer19(),
         sender.sender_2Motoren(240, 240, 30, 30),
         sender.sender_2Motoren(160, 96, 198, 198, true, 1),
-        8
+        8,
+        true,
+        true,
+        btf.e3Abstand.u1
         )
         btf.setaktiviert(btf.btf_sendBuffer19(), btf.e3aktiviert.ma, true)
     } else if (sender.isFunktion(sender.eFunktion.f20fahrplan)) {
