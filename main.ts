@@ -47,8 +47,8 @@ function modell_Callibot () {
     } else if (sender.isFunktion(sender.eFunktion.f20fahrplan) && sender.sender_ButtonB_Switch()) {
         sender.send2x2Motoren(
         btf.btf_sendBuffer19(),
-        sender.sender_2MotorenEncoder(240, 240, 30, 30),
-        sender.sender_2MotorenEncoder(160, 96, 198, 198, 1, true),
+        sender.sender_2Motoren(240, 240, 30, 30),
+        sender.sender_2Motoren(160, 96, 198, 198, true, 1),
         8
         )
         btf.setaktiviert(btf.btf_sendBuffer19(), btf.e3aktiviert.ma, true)
