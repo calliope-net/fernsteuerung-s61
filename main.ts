@@ -143,8 +143,8 @@ function modell_MKC_Sensoren () {
     } else if (sender.isFunktion(sender.eFunktion.f10fernstartenSpurfolger)) {
         sender.send10Spurfolger(
         btf.btf_sendBuffer19(),
+        255,
         192,
-        160,
         31,
         0,
         sender.sender_ButtonA_Switch(),
