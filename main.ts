@@ -189,7 +189,7 @@ input.onButtonEvent(Button.A, btf.buttonEventValue(ButtonEvent.Hold), function (
 sender.beimStart()
 loops.everyInterval(400, function () {
     if (sender.isFunktion(sender.eFunktion.ng) && sender.joystickQwiic()) {
-        basic.setLedColor(0x007fff)
+        btf.setLedColors(btf.btf_RgbLed(btf.eRgbLed.a), 0x007fff)
         btf.fill_sendBuffer19()
         if (sender.isModell(sender.eModell.cb2e)) {
             modell_Callibot()
@@ -203,6 +203,6 @@ loops.everyInterval(400, function () {
         btf.sendData(btf.btf_sendBuffer19())
         btf.zeige5x5Buffer(btf.btf_sendBuffer19())
         btf.zeige5x5Joystick(btf.btf_sendBuffer19())
-        basic.turnRgbLedOff()
+        btf.setLedColors(btf.btf_RgbLed(btf.eRgbLed.a), Colors.Off)
     }
 })
