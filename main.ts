@@ -15,7 +15,7 @@ function modell_Callibot () {
         16,
         64,
         0,
-        cb2.cb2_zehntelsekunden(btf.ePause.s1),
+        sender.sender_zehntelsekunden(btf.ePause.s1),
         btf.e3Abstand.u2
         )
         btf.setaktiviert(btf.btf_sendBuffer19(), btf.e3aktiviert.md, true)
