@@ -45,16 +45,7 @@ function modell_Callibot () {
         btf.e3Abstand.u0
         )
     } else if (sender.isFunktion(sender.eFunktion.f20fahrplan) && sender.sender_ButtonB_Switch()) {
-        sender.send2x2Motoren(
-        btf.btf_sendBuffer19(),
-        sender.sender_2Motoren(240, 240, 30, 30),
-        sender.sender_2Motoren(160, 96, 198, 198, true, 1),
-        8,
-        true,
-        true,
-        btf.e3Abstand.u1
-        )
-        btf.setaktiviert(btf.btf_sendBuffer19(), btf.e3aktiviert.ma, true)
+    	
     } else if (sender.isFunktion(sender.eFunktion.f20fahrplan)) {
         btf.setBetriebsart(btf.btf_sendBuffer19(), btf.e0Betriebsart.p2Fahrplan)
     }
@@ -80,6 +71,18 @@ function modell_MKC_Gabelstapler () {
     }
     btf.setSchalter(btf.btf_sendBuffer19(), btf.e0Schalter.b0, sender.joystickButtonPosition())
 }
+function macheEtwas () {
+    sender.send2x2Motoren(
+    btf.btf_sendBuffer19(),
+    sender.sender_2Motoren(240, 240, 30, 30),
+    sender.sender_2Motoren(160, 96, 198, 198, true, 1),
+    8,
+    true,
+    true,
+    btf.e3Abstand.u1
+    )
+    btf.setaktiviert(btf.btf_sendBuffer19(), btf.e3aktiviert.ma, true)
+}
 input.onButtonEvent(Button.AB, btf.buttonEventValue(ButtonEvent.Hold), function () {
     sender.setSendReset(true)
 })
@@ -104,9 +107,33 @@ function modell_MKC_Kran () {
 }
 input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
     sender.buttonA()
+    if (sender.isFunktion(sender.eFunktion.f20fahrplan)) {
+        btf.setLedColors(btf.btf_RgbLed(btf.eRgbLed.a), 0x007fff)
+        btf.fill_sendBuffer19()
+        sender.send2Strecken(
+        btf.btf_sendBuffer19(),
+        sender.sender_1MotorPicker(50, 90, 20),
+        sender.sender_1MotorPicker(-50, 90, 20),
+        null,
+        null,
+        null,
+        1,
+        true,
+        true,
+        btf.e3Abstand.u1
+        )
+        btf.sendData(btf.btf_sendBuffer19())
+        btf.zeige5x5Buffer(btf.btf_sendBuffer19())
+        btf.zeige5x5Joystick(btf.btf_sendBuffer19())
+        btf.setLedColors(btf.btf_RgbLed(btf.eRgbLed.a), Colors.Off)
+    }
 })
 input.onButtonEvent(Button.AB, input.buttonEventClick(), function () {
     sender.buttonAB()
+    if (sender.isFunktion(sender.eFunktion.f20fahrplan)) {
+        btf.zeige5x5Betriebsart(true, false)
+        btf.setLedColors(btf.btf_RgbLed(btf.eRgbLed.a), 0x00ff00)
+    }
 })
 input.onButtonEvent(Button.B, input.buttonEventClick(), function () {
     sender.buttonB()
@@ -188,7 +215,7 @@ input.onButtonEvent(Button.A, btf.buttonEventValue(ButtonEvent.Hold), function (
 })
 sender.beimStart()
 loops.everyInterval(400, function () {
-    if (sender.isFunktion(sender.eFunktion.ng) && sender.joystickQwiic()) {
+    if (sender.isFunktion(sender.eFunktion.ng) && !(sender.isFunktion(sender.eFunktion.f20fahrplan)) && sender.joystickQwiic()) {
         btf.setLedColors(btf.btf_RgbLed(btf.eRgbLed.a), 0x007fff)
         btf.fill_sendBuffer19()
         if (sender.isModell(sender.eModell.cb2e)) {

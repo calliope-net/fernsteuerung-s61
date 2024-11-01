@@ -4,7 +4,7 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "fernsteuerung": "github:calliope-net/fernsteuerung#v1.7.4",
+        "fernsteuerung": "github:calliope-net/fernsteuerung#v1.7.19",
         "v1": "*"
     },
     "files": [
@@ -16,11 +16,11 @@
         "test.ts"
     ],
     "targetVersions": {
-        "target": "6.0.42",
+        "target": "6.0.41",
         "targetId": "calliopemini"
     },
     "supportedTargets": [
         "calliopemini"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "tsprj"
 }
