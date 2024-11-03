@@ -32,22 +32,11 @@ function modell_Callibot () {
         )
         btf.setaktiviert(btf.btf_sendBuffer19(), btf.e3aktiviert.mc, sender.sender_ButtonB_Switch())
     } else if (sender.isFunktion(sender.eFunktion.f20fahrplan) && sender.sender_ButtonA_Switch()) {
-        sender.send2Strecken(
-        btf.btf_sendBuffer19(),
-        sender.sender_1Motor(192, 31, 30),
-        sender.sender_1Motor(64, 31, 30),
-        sender.sender_1Motor(255, 16, 20),
-        sender.sender_1Motor(192, 1, 115),
-        sender.sender_1Motor(1, 16, 20),
-        1,
-        true,
-        false,
-        btf.e3Abstand.u0
-        )
+    	
     } else if (sender.isFunktion(sender.eFunktion.f20fahrplan) && sender.sender_ButtonB_Switch()) {
     	
     } else if (sender.isFunktion(sender.eFunktion.f20fahrplan)) {
-        btf.setBetriebsart(btf.btf_sendBuffer19(), btf.e0Betriebsart.p2Fahrplan)
+    	
     }
     btf.setSchalter(btf.btf_sendBuffer19(), btf.e0Schalter.b0, sender.joystickButtonPosition())
 }
@@ -71,21 +60,36 @@ function modell_MKC_Gabelstapler () {
     }
     btf.setSchalter(btf.btf_sendBuffer19(), btf.e0Schalter.b0, sender.joystickButtonPosition())
 }
-function macheEtwas () {
-    sender.send2x2Motoren(
+input.onButtonEvent(Button.AB, btf.buttonEventValue(ButtonEvent.Hold), function () {
+    sender.setSendReset(true)
+})
+function mkc () {
+    sender.send2Strecken(
     btf.btf_sendBuffer19(),
-    sender.sender_2Motoren(240, 240, 30, 30),
-    sender.sender_2Motoren(160, 96, 198, 198, true, 1),
-    8,
+    sender.sender_1Motor(153, 29, 40),
+    sender.sender_1Motor(103, 29, 40),
+    sender.sender_1Motor(192, 16, 10),
+    sender.sender_1Motor(153, 3, 153),
+    sender.sender_1Motor(64, 16, 10),
+    1,
     true,
     true,
     btf.e3Abstand.u1
     )
-    btf.setaktiviert(btf.btf_sendBuffer19(), btf.e3aktiviert.ma, true)
+    sender.send2Strecken(
+    btf.btf_sendBuffer19(),
+    sender.sender_1Motor(153, 29, 40),
+    sender.sender_1Motor(103, 29, 40),
+    sender.sender_1Motor(192, 16, 10),
+    sender.sender_1Motor(153, 3, 153),
+    sender.sender_1Motor(64, 16, 10),
+    1,
+    true,
+    false,
+    btf.e3Abstand.u1
+    )
+    btf.setBetriebsart(btf.btf_sendBuffer19(), btf.e0Betriebsart.p2Fahrplan)
 }
-input.onButtonEvent(Button.AB, btf.buttonEventValue(ButtonEvent.Hold), function () {
-    sender.setSendReset(true)
-})
 function modell_MKC_Kran () {
     if (sender.isFunktion(sender.eFunktion.m0_s0)) {
         sender.send00M0Joystick(
@@ -105,22 +109,43 @@ function modell_MKC_Kran () {
     btf.setSchalter(btf.btf_sendBuffer19(), btf.e0Schalter.b0, sender.joystickButtonPosition())
     sender.send00MDKranMagnet(btf.btf_sendBuffer19(), sender.sender_ButtonB_Switch(), 240)
 }
+function callibot () {
+    sender.send2Strecken(
+    btf.btf_sendBuffer19(),
+    sender.sender_1Motor(192, 31, 30),
+    sender.sender_1Motor(64, 31, 30),
+    sender.sender_1Motor(255, 16, 20),
+    sender.sender_1Motor(192, 1, 115),
+    sender.sender_1Motor(1, 16, 20),
+    1,
+    true,
+    false,
+    btf.e3Abstand.u0
+    )
+    sender.send2x2Motoren(
+    btf.btf_sendBuffer19(),
+    sender.sender_2Motoren(240, 240, 30, 30),
+    sender.sender_2Motoren(160, 96, 198, 198, true, 1),
+    8,
+    true,
+    true,
+    btf.e3Abstand.u1
+    )
+    btf.setaktiviert(btf.btf_sendBuffer19(), btf.e3aktiviert.ma, true)
+    btf.setBetriebsart(btf.btf_sendBuffer19(), btf.e0Betriebsart.p2Fahrplan)
+}
 input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
     sender.buttonA()
     if (sender.isFunktion(sender.eFunktion.f20fahrplan)) {
         btf.setLedColors(btf.btf_RgbLed(btf.eRgbLed.a), 0x007fff)
-        btf.fill_sendBuffer19()
-        sender.send2Strecken(
+        sender.send5Strecken(
         btf.btf_sendBuffer19(),
-        sender.sender_1MotorPicker(50, 90, 20),
-        sender.sender_1MotorPicker(-50, 90, 20),
-        null,
-        null,
-        null,
-        1,
         true,
+        2,
         true,
-        btf.e3Abstand.u1
+        btf.e3Abstand.u1,
+        sender.sender_1MotorPicker(80, 90, 50),
+        sender.sender_1MotorPicker(-50, 90, 50)
         )
         btf.sendData(btf.btf_sendBuffer19())
         btf.zeige5x5Buffer(btf.btf_sendBuffer19())
@@ -137,6 +162,25 @@ input.onButtonEvent(Button.AB, input.buttonEventClick(), function () {
 })
 input.onButtonEvent(Button.B, input.buttonEventClick(), function () {
     sender.buttonB()
+    if (sender.isFunktion(sender.eFunktion.f20fahrplan)) {
+        btf.setLedColors(btf.btf_RgbLed(btf.eRgbLed.a), 0x007fff)
+        sender.send5Strecken(
+        btf.btf_sendBuffer19(),
+        true,
+        1,
+        true,
+        btf.e3Abstand.u1,
+        sender.sender_1MotorPicker(60, 90, 30),
+        sender.sender_1MotorPicker(-50, 180, 20),
+        sender.sender_1MotorPicker(-50, 0, 20),
+        sender.sender_1MotorPicker(-60, 90, 20),
+        sender.sender_1MotorPicker(60, 90, 30)
+        )
+        btf.sendData(btf.btf_sendBuffer19())
+        btf.zeige5x5Buffer(btf.btf_sendBuffer19())
+        btf.zeige5x5Joystick(btf.btf_sendBuffer19())
+        btf.setLedColors(btf.btf_RgbLed(btf.eRgbLed.a), Colors.Off)
+    }
 })
 input.onButtonEvent(Button.B, btf.buttonEventValue(ButtonEvent.Hold), function () {
     btf.buttonBhold()
@@ -180,33 +224,11 @@ function modell_MKC_Sensoren () {
         )
         btf.setaktiviert(btf.btf_sendBuffer19(), btf.e3aktiviert.mc, sender.sender_ButtonB_Switch())
     } else if (sender.isFunktion(sender.eFunktion.f20fahrplan) && sender.sender_ButtonA_Switch()) {
-        sender.send2Strecken(
-        btf.btf_sendBuffer19(),
-        sender.sender_1Motor(153, 29, 40),
-        sender.sender_1Motor(103, 29, 40),
-        sender.sender_1Motor(192, 16, 10),
-        sender.sender_1Motor(153, 3, 153),
-        sender.sender_1Motor(64, 16, 10),
-        1,
-        true,
-        true,
-        btf.e3Abstand.u1
-        )
+    	
     } else if (sender.isFunktion(sender.eFunktion.f20fahrplan) && sender.sender_ButtonB_Switch()) {
-        sender.send2Strecken(
-        btf.btf_sendBuffer19(),
-        sender.sender_1Motor(153, 29, 40),
-        sender.sender_1Motor(103, 29, 40),
-        sender.sender_1Motor(192, 16, 10),
-        sender.sender_1Motor(153, 3, 153),
-        sender.sender_1Motor(64, 16, 10),
-        1,
-        true,
-        false,
-        btf.e3Abstand.u1
-        )
+    	
     } else if (sender.isFunktion(sender.eFunktion.f20fahrplan)) {
-        btf.setBetriebsart(btf.btf_sendBuffer19(), btf.e0Betriebsart.p2Fahrplan)
+    	
     }
     btf.setSchalter(btf.btf_sendBuffer19(), btf.e0Schalter.b0, sender.joystickButtonPosition())
 }
